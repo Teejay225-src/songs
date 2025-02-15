@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song Lyrics Slider</title>
+    <title>Song Lyrics Folder</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; background-color: #f4f4f4; }
         .slide { display: none; padding: 50px; text-align: left; }
         .active { display: block; }
+        .album { margin-bottom: 30px; }
+        .album-title { font-size: 24px; font-weight: bold; margin-left: 20px; }
         .song-button, .back-button { 
             display: block; 
             margin: 10px 0 10px 20px; 
@@ -29,13 +31,21 @@
 </head>
 <body>
     <div id="slide1" class="slide active">
-        <h1>Select a Song</h1>
-        <button class="song-button" onclick="showSlide('song1')">Song 1</button>
-        <button class="song-button" onclick="showSlide('song2')">Song 2</button>
+        <h1>Select an Album</h1>
+        <div class="album">
+            <p class="album-title">Album 1</p>
+            <button class="song-button" onclick="showSlide('song1')">Song 1</button>
+            <button class="song-button" onclick="showSlide('song2')">Song 2</button>
+        </div>
+        <div class="album">
+            <p class="album-title">Album 2</p>
+            <button class="song-button" onclick="showSlide('song3')">Song 3</button>
+            <button class="song-button" onclick="showSlide('song4')">Song 4</button>
+        </div>
     </div>
 
     <div id="song1" class="slide">
-        <h1>What Makes You Beautiful</h1>
+        <h1>Song 1 Lyrics</h1>
         <p>Lyrics of song 1 go here...</p>
         <button class="back-button" onclick="showSlide('slide1')">Back</button>
     </div>
@@ -43,6 +53,18 @@
     <div id="song2" class="slide">
         <h1>Song 2 Lyrics</h1>
         <p>Lyrics of song 2 go here...</p>
+        <button class="back-button" onclick="showSlide('slide1')">Back</button>
+    </div>
+
+    <div id="song3" class="slide">
+        <h1>Song 3 Lyrics</h1>
+        <p>Lyrics of song 3 go here...</p>
+        <button class="back-button" onclick="showSlide('slide1')">Back</button>
+    </div>
+
+    <div id="song4" class="slide">
+        <h1>Song 4 Lyrics</h1>
+        <p>Lyrics of song 4 go here...</p>
         <button class="back-button" onclick="showSlide('slide1')">Back</button>
     </div>
 
