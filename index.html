@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Lyrics Slider</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
+        .slide { display: none; padding: 50px; }
+        .active { display: block; }
+        .song-button { display: block; margin: 10px auto; padding: 10px; font-size: 18px; cursor: pointer; }
+        .back-button { margin-top: 20px; padding: 10px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="slide1" class="slide active">
+        <h1>Select a Song</h1>
+        <button class="song-button" onclick="showSlide('song1')">Song 1</button>
+        <button class="song-button" onclick="showSlide('song2')">Song 2</button>
+    </div>
+
+    <div id="song1" class="slide">
+        <h1>Song 1 Lyrics</h1>
+        <p>Lyrics of song 1 go here...</p>
+        <button class="back-button" onclick="showSlide('slide1')">Back</button>
+    </div>
+
+    <div id="song2" class="slide">
+        <h1>Song 2 Lyrics</h1>
+        <p>Lyrics of song 2 go here...</p>
+        <button class="back-button" onclick="showSlide('slide1')">Back</button>
+    </div>
+
+    <script>
+        function showSlide(slideId) {
+            document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
+            document.getElementById(slideId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
