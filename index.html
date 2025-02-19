@@ -44,12 +44,24 @@
     <div id="song-slides"></div>
 
     <script>
+        // Predefined song names for each song (replace with actual song names)
+        const songNames = {
+            1: "Song One - First Melody",
+            2: "Song Two - Second Vibe",
+            3: "Song Three - Third Tune",
+            18: "Song Eighteen - Grand Finale",
+            19: "Song Nineteen - Epic Rise",
+            20: "Song Twenty - Heartbeat",
+            39: "Song Thirty Nine - Journey's End",
+            // Add names for all other songs
+            89: "Song Eighty Nine - Final Chapter"
+        };
+
         // Predefined lyrics for each song (replace with actual lyrics)
         const songLyrics = {
-            1: "you're insecure",
+            1: "This is the lyrics of song 1.",
             2: "Lyrics for song 2 go here.",
             3: "Song 3 has these lyrics...",
-            // Continue adding your lyrics for each song
             18: "Lyrics for song 18.",
             19: "Here are the lyrics of song 19.",
             20: "Song 20 lyrics...",
@@ -67,7 +79,7 @@
                 for (let songNumber = (albumNumber - 1) * 18 + 1; songNumber <= albumNumber * 18; songNumber++) {
                     let songButton = document.createElement('button');
                     songButton.classList.add('song-button');
-                    songButton.innerText = `Song ${songNumber}`;
+                    songButton.innerText = songNames[songNumber] || `Song ${songNumber}`; // Use the custom name or default to "Song X"
                     songButton.onclick = () => showSong(songNumber);
                     albumDiv.appendChild(songButton);
                 }
@@ -78,10 +90,11 @@
         function showSong(songNumber) {
             const slideContainer = document.getElementById('song-slides');
             const lyrics = songLyrics[songNumber] || "No lyrics available for this song.";
+            const songName = songNames[songNumber] || `Song ${songNumber}`;
 
             slideContainer.innerHTML = `
                 <div id="song${songNumber}" class="slide active">
-                    <h1>Song ${songNumber} Lyrics</h1>
+                    <h1>${songName} Lyrics</h1>
                     <p>${lyrics}</p>
                     <button class="back-button" onclick="showSlide('slide1')">Back</button>
                 </div>
@@ -100,3 +113,4 @@
     </script>
 </body>
 </html>
+
