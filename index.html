@@ -44,6 +44,20 @@
     <div id="song-slides"></div>
 
     <script>
+        // Predefined lyrics for each song (replace with actual lyrics)
+        const songLyrics = {
+            1: "This is the lyrics of song 1.",
+            2: "Lyrics for song 2 go here.",
+            3: "Song 3 has these lyrics...",
+            // Continue adding your lyrics for each song
+            18: "Lyrics for song 18.",
+            19: "Here are the lyrics of song 19.",
+            20: "Song 20 lyrics...",
+            39: "This is the lyrics of song 39.",
+            // Add all the other song lyrics
+            89: "Final song lyrics."
+        };
+
         // Function to generate album buttons
         function generateAlbums() {
             for (let albumNumber = 1; albumNumber <= 5; albumNumber++) {
@@ -63,10 +77,12 @@
         // Function to show a song slide
         function showSong(songNumber) {
             const slideContainer = document.getElementById('song-slides');
+            const lyrics = songLyrics[songNumber] || "No lyrics available for this song.";
+
             slideContainer.innerHTML = `
                 <div id="song${songNumber}" class="slide active">
                     <h1>Song ${songNumber} Lyrics</h1>
-                    <p>Lyrics of song ${songNumber} go here...</p>
+                    <p>${lyrics}</p>
                     <button class="back-button" onclick="showSlide('slide1')">Back</button>
                 </div>
             `;
@@ -84,4 +100,3 @@
     </script>
 </body>
 </html>
-
