@@ -33,39 +33,55 @@
     <div id="slide1" class="slide active">
         <h1>Select an Album</h1>
         
-        <div class="album">
-            <p class="album-title">Album 1</p>
-            " + "".join([f'<button class="song-button" onclick="showSlide('song{i}')">Song {i}</button>' for i in range(1, 19)]) + "
-        </div>
-        
-        <div class="album">
-            <p class="album-title">Album 2</p>
-            " + "".join([f'<button class="song-button" onclick="showSlide('song{i}')">Song {i}</button>' for i in range(19, 39)]) + "
-        </div>
-        
-        <div class="album">
-            <p class="album-title">Album 3</p>
-            " + "".join([f'<button class="song-button" onclick="showSlide('song{i}')">Song {i}</button>' for i in range(39, 57)]) + "
-        </div>
-        
-        <div class="album">
-            <p class="album-title">Album 4</p>
-            " + "".join([f'<button class="song-button" onclick="showSlide('song{i}')">Song {i}</button>' for i in range(57, 73)]) + "
-        </div>
-        
-        <div class="album">
-            <p class="album-title">Album 5</p>
-            " + "".join([f'<button class="song-button" onclick="showSlide('song{i}')">Song {i}</button>' for i in range(73, 90)]) + "
-        </div>
+        <div class="album" id="album1"></div>
+        <div class="album" id="album2"></div>
+        <div class="album" id="album3"></div>
+        <div class="album" id="album4"></div>
+        <div class="album" id="album5"></div>
     </div>
     
-    " + "".join([f'<div id="song{i}" class="slide"><h1>Song {i} Lyrics</h1><p>Lyrics of song {i} go here...</p><button class="back-button" onclick="showSlide('slide1')">Back</button></div>' for i in range(1, 90)]) + "
-    
+    <!-- Dynamic Song slides -->
+    <div id="song-slides"></div>
+
     <script>
+        // Function to generate album buttons
+        function generateAlbums() {
+            for (let albumNumber = 1; albumNumber <= 5; albumNumber++) {
+                let albumDiv = document.getElementById(`album${albumNumber}`);
+                albumDiv.innerHTML = `<p class="album-title">Album ${albumNumber}</p>`;
+                
+                for (let songNumber = (albumNumber - 1) * 18 + 1; songNumber <= albumNumber * 18; songNumber++) {
+                    let songButton = document.createElement('button');
+                    songButton.classList.add('song-button');
+                    songButton.innerText = `Song ${songNumber}`;
+                    songButton.onclick = () => showSong(songNumber);
+                    albumDiv.appendChild(songButton);
+                }
+            }
+        }
+
+        // Function to show a song slide
+        function showSong(songNumber) {
+            const slideContainer = document.getElementById('song-slides');
+            slideContainer.innerHTML = `
+                <div id="song${songNumber}" class="slide active">
+                    <h1>Song ${songNumber} Lyrics</h1>
+                    <p>Lyrics of song ${songNumber} go here...</p>
+                    <button class="back-button" onclick="showSlide('slide1')">Back</button>
+                </div>
+            `;
+            showSlide(`song${songNumber}`);
+        }
+
+        // Function to switch between slides
         function showSlide(slideId) {
             document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
             document.getElementById(slideId).classList.add('active');
         }
+
+        // Initialize albums on page load
+        generateAlbums();
     </script>
 </body>
 </html>
+
